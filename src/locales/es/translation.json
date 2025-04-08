@@ -49,5 +49,11 @@
   "clearTitle": "Borrar",
   "clearDescription": "Elimina todos los datos de la aplicación, incluidos préstamos, voluntarios y herramientas. Esta acción no se puede deshacer.",
   "howToUseDescription": "Aprende a usar la herramienta paso a paso.",
-  "close": "Cerrar"
+  "close": "Cerrar",
+  "viewVolunteers": "Ver Voluntarios",
+  "viewTools": "Ver Herramientas",
+  "volunteersAddedSuccess": "Voluntarios Agregados",
+  "volunteersAddedSuccessDesc": "voluntarios fueron agregados exitosamente.",
+  "toolsAddedSuccess": "Herramientas Agregadas",
+  "toolsAddedSuccessDesc": "herramientas fueron agregadas exitosamente."
 }

@@ -3,9 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import * as XLSX from 'xlsx'; // Import the xlsx library
 
-function Add({ handleAddVolunteer, handleAddTool, handleAddMultipleVolunteers, handleAddMultipleTools }) {
+function Add({ handleAddVolunteer, handleAddTool, handleAddMultipleVolunteers, handleAddMultipleTools, volunteers, tools }) {
   const { t } = useTranslation(); // Hook to access translations
 
   const [volunteerName, setVolunteerName] = React.useState('');
@@ -60,10 +62,7 @@ function Add({ handleAddVolunteer, handleAddTool, handleAddMultipleVolunteers, h
           onChange={(e) => setVolunteerId(e.target.value)}
           className="m-1"
         />
-        <Button
-          onClick={addVolunteer}
-          className="m-1"
-        >
+        <Button onClick={addVolunteer} className="m-1">
           {t('add')}
         </Button>
         <Separator className="my-4" />
@@ -71,7 +70,6 @@ function Add({ handleAddVolunteer, handleAddTool, handleAddMultipleVolunteers, h
 
       {/* Add Single Tool */}
       <div className="p-4">
-        
         <h3 className="text-lg font-bold mb-2">{t('addSingleTool')}</h3>
         <Input
           type="text"
@@ -87,10 +85,7 @@ function Add({ handleAddVolunteer, handleAddTool, handleAddMultipleVolunteers, h
           onChange={(e) => setToolId(e.target.value)}
           className="m-1"
         />
-        <Button
-          onClick={addTool}
-          className="m-1"
-        >
+        <Button onClick={addTool} className="m-1">
           {t('add')}
         </Button>
         <Separator className="my-4" />
@@ -130,6 +125,66 @@ function Add({ handleAddVolunteer, handleAddTool, handleAddMultipleVolunteers, h
         >
           {t('downloadExample')}
         </a>
+      </div>
+
+      {/* View Volunteers */}
+      <div className="p-4">
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="outline">{t('viewVolunteers')}</Button>
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <SheetTitle>{t('volunteers')}</SheetTitle>
+            </SheetHeader>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>{t('volunteerId')}</TableHead>
+                  <TableHead>{t('volunteerName')}</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {volunteers && Array.from(volunteers.values()).map((volunteer) => (
+                  <TableRow key={volunteer.id}>
+                    <TableCell>{volunteer.id}</TableCell>
+                    <TableCell>{volunteer.name}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </SheetContent>
+        </Sheet>
+      </div>
+
+      {/* View Tools */}
+      <div className="p-4">
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="outline">{t('viewTools')}</Button>
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <SheetTitle>{t('tools')}</SheetTitle>
+            </SheetHeader>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>{t('toolId')}</TableHead>
+                  <TableHead>{t('toolName')}</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {tools && Array.from(tools.values()).map((tool) => (
+                  <TableRow key={tool.id}>
+                    <TableCell>{tool.id}</TableCell>
+                    <TableCell>{tool.name}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </SheetContent>
+        </Sheet>
       </div>
     </div>
   );

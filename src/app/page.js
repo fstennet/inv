@@ -74,10 +74,6 @@ function Home() {
       return;
     }
 
-    console.log('borrows', typeof(borrows));
-    console.log('volunteers', volunteers);
-    console.log('tools', tools);
-
     const data = [borrows, volunteers, tools];
 
     for (let i = 0; i < data.length; i++) {
@@ -239,15 +235,21 @@ function Home() {
   };
 
   const handleAddMultipleVolunteers = (volunteers) => {
+    let count = 0;
     for (const volunteer of volunteers) {
       handleAddVolunteer(volunteer);
+      count++;
     }
+    toast(t('volunteersAddedSuccess'), { description: `${count} ${t('volunteersAddedSuccessDesc')}` });
   };
 
   const handleAddMultipleTools = (tools) => {
+    let count = 0;
     for (const tool of tools) {
       handleAddTool(tool);
+      count++;
     }
+    toast(t('toolsAddedSuccess'), { description: `${count} ${t('toolsAddedSuccessDesc')}` });
   };
 
   const renderView = (viewName) => {
@@ -373,7 +375,7 @@ function Home() {
               className="hidden"
               onChange={uploadData}
             />
-          <Button variant="destructive" onClick={clearData}>
+          <Button variant="destructive" hidden onClick={clearData}>
             {t('clear')}
           </Button>
         </div>
@@ -420,6 +422,8 @@ function Home() {
               handleAddTool={handleAddTool}
               handleAddMultipleVolunteers={handleAddMultipleVolunteers}
               handleAddMultipleTools={handleAddMultipleTools}
+              volunteers={volunteers}
+              tools={tools}
             />
           </CardContent>
         </Card>

@@ -49,5 +49,11 @@
   "clearTitle": "Clear",
   "clearDescription": "Clear all data from the application, including borrows, volunteers, and tools. This action cannot be undone.",
   "howToUseDescription": "Learn how to use the tool step by step.",
-  "close": "Close"
+  "close": "Close",
+  "viewVolunteers": "View Volunteers",
+  "viewTools": "View Tools",
+  "volunteersAddedSuccess": "Volunteers Added",
+  "volunteersAddedSuccessDesc": "volunteers were successfully added.",
+  "toolsAddedSuccess": "Tools Added",
+  "toolsAddedSuccessDesc": "tools were successfully added."
 }
