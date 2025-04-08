@@ -561,7 +561,7 @@ function Home() {
         </div>
       </DrawerContent>
     </Drawer>
-    <div>v0.0.15</div>
+    <div>v0.0.16</div>
   </div>
   );
 }
