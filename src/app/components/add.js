@@ -7,7 +7,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/co
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import * as XLSX from 'xlsx'; // Import the xlsx library
 
-function Add({ handleAddVolunteer, handleAddTool, handleAddMultipleVolunteers, handleAddMultipleTools, volunteers, tools }) {
+function Add({ handleAddVolunteer, handleAddTool, handleAddMultipleVolunteers, handleAddMultipleTools, volunteers, tools, handleDeleteVolunteer, handleDeleteTool }) {
   const { t } = useTranslation(); // Hook to access translations
 
   const [volunteerName, setVolunteerName] = React.useState('');
@@ -148,7 +148,11 @@ function Add({ handleAddVolunteer, handleAddTool, handleAddMultipleVolunteers, h
                 {volunteers && Array.from(volunteers.values()).map((volunteer, index) => (
                   <TableRow key={index}>
                     <TableCell>{volunteer.id}</TableCell>
-                    <TableCell>{volunteer.name}</TableCell>
+                    <TableCell>{volunteer.name}
+                      <div onClick={() => handleDeleteVolunteer(volunteer.id)}>
+                        ❌
+                      </div>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -178,7 +182,11 @@ function Add({ handleAddVolunteer, handleAddTool, handleAddMultipleVolunteers, h
                 {tools && Array.from(tools.values()).map((tool, index) => (
                   <TableRow key={index}>
                     <TableCell>{tool.id}</TableCell>
-                    <TableCell>{tool.name}</TableCell>
+                    <TableCell>{tool.name}
+                      <a onClick={() => handleDeleteTool(tool.id)}>
+                        ❌
+                      </a>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

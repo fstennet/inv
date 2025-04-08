@@ -261,6 +261,22 @@ function Home() {
     toast(t('toolsAddedSuccess'), { description: `${count} ${t('toolsAddedSuccessDesc')}` });
   };
 
+  const handleDeleteVolunteer = (id) => {
+    setVolunteers((prevVolunteers) => {
+      var newVolunteers = new Map(prevVolunteers);
+      newVolunteers.delete(id);
+      return newVolunteers;
+    });
+  };
+
+  const handleDeleteTool = (id) => {
+    setTools((prevTools) => {
+      var newTools = new Map(prevTools);
+      newTools.delete(id);
+      return newTools;
+    });
+  };
+
   const renderView = (viewName) => {
     switch (viewName) {
       case "scan":
@@ -433,6 +449,8 @@ function Home() {
               handleAddMultipleTools={handleAddMultipleTools}
               volunteers={volunteers}
               tools={tools}
+              handleDeleteTool={handleDeleteTool}
+              handleDeleteVolunteer={handleDeleteVolunteer}
             />
           </CardContent>
         </Card>
@@ -543,6 +561,7 @@ function Home() {
         </div>
       </DrawerContent>
     </Drawer>
+    <div>v0.0.15</div>
   </div>
   );
 }
