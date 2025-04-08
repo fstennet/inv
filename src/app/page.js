@@ -152,7 +152,7 @@ function Home() {
   };
 
   const handleSearch = (event) => {
-    const term = event.target.value;
+    const term = event.target.value.toLowerCase();
     setSearchTerm(term);
 
     const volunteer = searchVolunteers(term);
@@ -236,7 +236,12 @@ function Home() {
 
   const handleAddMultipleVolunteers = (volunteers) => {
     let count = 0;
-    for (const volunteer of volunteers) {
+    for (var volunteer of volunteers) {
+      volunteer = {
+        ...volunteer,
+        id: volunteer.id ? volunteer.id.toString().toLowerCase() : ''
+      };
+
       handleAddVolunteer(volunteer);
       count++;
     }
@@ -245,7 +250,11 @@ function Home() {
 
   const handleAddMultipleTools = (tools) => {
     let count = 0;
-    for (const tool of tools) {
+    for (var tool of tools) {
+      tool = {
+        ...tool,
+        id: tool.id ? tool.id.toString().toLowerCase() : ''
+      };
       handleAddTool(tool);
       count++;
     }

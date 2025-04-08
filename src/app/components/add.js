@@ -145,8 +145,8 @@ function Add({ handleAddVolunteer, handleAddTool, handleAddMultipleVolunteers, h
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {volunteers && Array.from(volunteers.values()).map((volunteer) => (
-                  <TableRow key={volunteer.id}>
+                {volunteers && Array.from(volunteers.values()).map((volunteer, index) => (
+                  <TableRow key={index}>
                     <TableCell>{volunteer.id}</TableCell>
                     <TableCell>{volunteer.name}</TableCell>
                   </TableRow>
@@ -175,8 +175,8 @@ function Add({ handleAddVolunteer, handleAddTool, handleAddMultipleVolunteers, h
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {tools && Array.from(tools.values()).map((tool) => (
-                  <TableRow key={tool.id}>
+                {tools && Array.from(tools.values()).map((tool, index) => (
+                  <TableRow key={index}>
                     <TableCell>{tool.id}</TableCell>
                     <TableCell>{tool.name}</TableCell>
                   </TableRow>
